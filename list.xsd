@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xsd:schema xmlns="http://www.eeml.org/xsd/0.5.1" elementFormDefault="qualified" targetNamespace="http://www.eeml.org/xsd/0.5.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="eeml">
+    <xsd:complexType>
+      <xsd:choice>
+        <xsd:element maxOccurs="unbounded" name="lists">
+          <xsd:complexType>         
+            <xsd:element minOccurs="0" name="searchtags" type="xsd:string" />
+            <xsd:element minOccurs="0" name="provinces" type="xsd:string" />
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="unbounded" name="data">
+                <xsd:complexType>
+                    <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="deviceSI" type="xsd:string" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="tags" type="xsd:string" />
+  	                <xsd:element minOccurs="0" maxOccurs="1" name="location" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+             </xsd:sequence>            
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:attribute name="version" use="optional">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">            
+            <xsd:enumeration value="0.0.1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
