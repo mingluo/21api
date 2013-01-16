@@ -57,4 +57,60 @@ Common status codes include:
 Reference:
 1. Extended Environment Markup Language - www.eeml.org
 
+版本0.01 – GET operation definition
+
+0.01版 - 创建GET操作定义
+
+这个API是完全基于HTTP的请求协议，符合Representational State Transfer（REST）的设计原则。
+
+RESTful　API的访问使用HTTP的动词，以确定哪些行动对特定的数据对象：
+
+        GET：获取对象的当前状态
+        PUT：设置对象的当前状态
+        POST：创建一个新的对象
+        DELETE删除：删除对象
+
+对于数据检索，如平台的整合，唯一所需的API是GET，虽然会支持PUT以添加标签／tag，提高搜索能力。
+
+参数/说明/示例
+tag
+返回一串feeds，符合list.xsd的形式，包含与搜索查询的数据流标记。
+http://APIDOTCOM/v1/feeds?tag=greenhouse
+
+province
+它返回一串feeds，符合feed.xsd的形式，在全省范围内。
+http://APIDOTCOM/v1/feeds?province=anhui&tag=greenhouse
+
+fd或feed
+它返回在一个网关（feed）ID之内的所有传感器相关的信息。符合feed.xsd的形式。
+http://APIDOTCOM/v1/feeds?fd=4efbg56sq2
+
+
+数据对象：
+环境温度表示“amtemp”。
+湿度被表示为“humidity”。
+土壤温度被表示为“soiltemp”。
+土壤湿度表示“soilhumid”。
+表示为“sun”。
+
+一个feed 或网关最多支持250传感器。它可以覆盖一个1.5公里半径的地区。传感器和传感器之间最大距离应该可以达到300到500米。最理想的传播视线（line of sight）的是500米。因此，在正常的无线电干扰条件下如温室和混凝土建筑，300米的距离是可以支持。
+
+HTTP状态码
+
+API尝试图返回相应的HTTP状态码（见http://en.wikipedia.org/wiki/List_of_HTTP_status_codes）。
+
+常见的状态代码包括：
+
+        200 OK：成功处理的请求。
+        401未授权：要么你需要提供身份验证凭据，或提供的凭证是无效的。
+        403禁止访问：服务器能理解你的要求，但拒绝履行它。一位随行的错误消息应该给予解释。
+        404未找到：要么你请求一个无效的URI或资源不存在问题（如没有这种饲料）。
+        422无法处理的实体：服务器无法创建一个源，因为EEML / JSON是不完整的/有效的（例如，它并没有包括“title”element）。
+        500内部服务器错误：发生了错误。
+        503无服务器错误：通常发生时，有太多的要求，进入服务器 - 如果你得到这个从一个API请求，那么错误信息会被返回的XML响应。
+
+　
+参考：
+1。扩展环境标记语言 - www.eeml.org
+
 
