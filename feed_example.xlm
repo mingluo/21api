@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<feed creator="Beijing Daxin farmers cooperative">
+    <title>Cosm Office environment</title>
+    <feedsite>http://www.example.com/</website>
+    <status>live</status>
+    <private>false</private>
+    <tag>temperature</tag>
+    <tag>humidity</tag>
+    <tag>soil</tag>
+    <tag>daxin</tag>
+    <location domain="physical" exposure="greenhouse" disposition="fixed">
+      <province-city>beijing</province-city>
+      <town>daxin</town>
+      <lat>51.5235375648154</lat>
+      <lon>-0.0807666778564453</lon>
+      <ele>23.0</ele>
+    </location>
+    <data>
+      <datapoint-id>qwer</datapoint-id>
+      <datapoint-grp>asdf<datapoint-grp>
+      <time>2001-10-26T19:32:52Z</time>
+      <amtemp>23.23</amtemp>
+      <humidity>76</humidity>
+      <soiltemp>21.90</soiltemp>
+      <soilhumd>92</soilhumd>
+      <sun>23</sun>
+    </data>      
+    <data>
+      <datapoint-id>asd3</datapoint-id>
+      <datapoint-grp>asdf<datapoint-grp>
+      <time>2013-10-26T19:32:52Z</time>
+      <amtemp>24.00</amtemp>
+      <humidity>77</humidity>
+      <soiltemp>21.90</soiltemp>
+      <soilhumd>92</soilhumd>
+      <sun>22</sun>
+    </data>
+    <data>
+      <datapoint-id>qwe2</datapoint-id>
+      <datapoint-grp>asd1<datapoint-grp>
+      <time>2001-10-26T19:32:52Z</time>
+      <amtemp>20.44</amtemp>
+      <humidity>80</humidity>
+      <soiltemp>21.94</soiltemp>
+      <soilhumd>92</soilhumd>
+      <sun>23</sun>
+    </data>
+</feed>
+
