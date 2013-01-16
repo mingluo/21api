@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<list>
+  <searchtags>temperature&humidity</searchtags>
+  <province>anhui</province>
+  <data>
+    <id>12345678</id>
+	  <tags>temperature humidity<tags>
+  </data>
+  <data>
+	  <id>qwertyui</id>
+	  <tags>temperature humidity soil<tags>
+  </data>
+</list
