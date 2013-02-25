@@ -17,17 +17,19 @@ RESTful access uses the HTTP verbs to determine which action to make on a partic
 For the data retrieval, such as the platform integration, the only desired API is GET, although PUT will be supported to add tags to enhance search capability.
 
 Parameter/Description/Example
-tag
+tag  [OBSOLETE]
 It returns feeds, in a form of sesnor.xsd conformed, containing data streams tagged with the search query. 
 http://APIDOTCOM/v1/feeds?tag=greenhouse
 
-province
+province or null
 It returns all the feeds, in a form of sesnor.xsd conformed, within the province.
-http://APIDOTCOM/v1/feeds?province=anhui&tag=greenhouse
+http://APIDOTCOM/feed.php/anhui
+http://APIDOTCOM/feed.php
+
 
 fd or feed
 It returns all sensor information pertaining to the given feed ID. It returns in a form of feed.xsd conformed.
-http://APIDOTCOM/v1/feeds?fd=4efbg56sq2
+http://APIDOTCOM/sensor.php/23456
 
 
 Data objects:
@@ -53,6 +55,16 @@ Common status codes include:
         500 Internal Server Error: Something went wrong.
         503 No server error: usually occurs when there are too many requests coming into the server - if you get this from an API request then the error message will be returned in XML in the response.
 
+Deployment:
+SQL table shall be created based on the information provided by the sql file, under ./src/sql. This is MySQL compatible.
+
+Two PHP files shall be deployed at the desirable location of Apache web server to serve request. These two files serve 
+feed and sensor RESTFul requests.
+
+Please NOTE - The correct MySQL account and password must be replaced to be able to successfully access to the database.
+The change is required at the beginning of feed.php and sensor.php.
+
+$link = mysql_connect('localhost', 'acct', 'pass')
 
 Reference:
 1. Extended Environment Markup Language - www.eeml.org
@@ -73,17 +85,15 @@ RESTful　API的访问使用HTTP的动词，以确定哪些行动对特定的数
 对于数据检索，如平台的整合，唯一所需的API是GET，虽然会支持PUT以添加标签／tag，提高搜索能力。
 
 参数/说明/示例
-tag
-返回一串feeds，符合list.xsd的形式，包含与搜索查询的数据流标记。
-http://APIDOTCOM/v1/feeds?tag=greenhouse
 
-province
-它返回一串feeds，符合feed.xsd的形式，在全省范围内。
-http://APIDOTCOM/v1/feeds?province=anhui&tag=greenhouse
+feed 或 网关
+它返回一串feeds，符合list.xsd的形式，在全省范围内。
+http://APIDOTCOM/feed.php/anhui
+http://APIDOTCOM/feed.php
 
-fd或feed
+sensor
 它返回在一个网关（feed）ID之内的所有传感器相关的信息。符合feed.xsd的形式。
-http://APIDOTCOM/v1/feeds?fd=4efbg56sq2
+http://APIDOTCOM/sensor.php/23456
 
 
 数据对象：
@@ -109,6 +119,16 @@ API尝试图返回相应的HTTP状态码（见http://en.wikipedia.org/wiki/List_
         500内部服务器错误：发生了错误。
         503无服务器错误：通常发生时，有太多的要求，进入服务器 - 如果你得到这个从一个API请求，那么错误信息会被返回的XML响应。
 
+部署：
+/src/sql目录下的sql文件 提供有关的信息，可用于应建立SQL的表格（table）。数据库必须是MySQL兼容的。
+
+两个PHP文件必须被部署在Apache Web服务器的理想的位置（directory）以用于回应HTTP Restful的服务请求。这两个文件是
+feed.php和sensor.php 以满足的RESTful请求。
+
+请注意 - 正确的MySQL帐号和密码（'acct', 'pass'）必须被更换，以能够成功地访问数据库。
+要更改的地方在开始的feed.php和sensor.php。
+
+$link = mysql_connect('localhost', 'acct', 'pass')
 　
 参考：
 1。扩展环境标记语言 - www.eeml.org
